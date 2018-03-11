@@ -218,6 +218,29 @@ public class CompilerMojo
 
                 resolvePathsResult = locationManager.resolvePaths( request );
                 
+                Map<File, Exception> pathExceptions = resolvePathsResult.getPathExceptions();
+                if ( !pathExceptions.isEmpty() )
+                {
+                    final String ls = System.getProperty( "line.separator" );
+
+                    StringBuilder sb = new StringBuilder( "Can't extract module name from the following entries:" );
+                  
+                    for ( Map.Entry<File, Exception> pathException : resolvePathsResult.getPathExceptions().entrySet() )
+                    {
+                        Throwable cause = pathException.getValue();
+
+                        while ( cause.getCause() != null )
+                        {
+                            cause = cause.getCause();
+                        }
+
+                        sb.append( ls ).append( "  - " ).append( pathException.getKey().getName() ).append( ": " )
+                            .append( cause.getMessage() );
+                    }
+                    
+                    getLog().warn( sb );
+                }
+
                 JavaModuleDescriptor moduleDescriptor = resolvePathsResult.getMainModuleDescriptor();
 
                 for ( Map.Entry<File, ModuleNameSource> entry : resolvePathsResult.getModulepathElements().entrySet() )
