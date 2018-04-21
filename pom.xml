@@ -30,7 +30,7 @@ under the License.
   </parent>
 
   <artifactId>maven-compiler-plugin</artifactId>
-  <version>3.7.0</version>
+  <version>3.7.0.0.cosium-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
 
   <name>Apache Maven Compiler Plugin</name>
@@ -51,10 +51,11 @@ under the License.
     <url>https://issues.apache.org/jira/browse/MCOMPILER</url>
   </issueManagement>
   <distributionManagement>
-    <site>
-      <id>apache.website</id>
-      <url>scm:svn:https://svn.apache.org/repos/infra/websites/production/maven/components/${maven.site.path}</url>
-    </site>
+    <repository>
+      <id>cosium-repo</id>
+      <name>Internal Release Repository</name>
+      <url>https://repo.cosium.com/repository/internal/</url>
+    </repository>
   </distributionManagement>
 
   <properties>
