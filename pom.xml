@@ -30,7 +30,7 @@ under the License.
   </parent>
 
   <artifactId>maven-compiler-plugin</artifactId>
-  <version>3.7.1-SNAPSHOT</version>
+  <version>3.7.0.0.next.cosium-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
 
   <name>Apache Maven Compiler Plugin</name>
@@ -42,10 +42,9 @@ under the License.
   </prerequisites>
 
   <scm>
-    <connection>scm:git:https://gitbox.apache.org/repos/asf/maven-compiler-plugin.git</connection>
-    <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/maven-compiler-plugin.git</developerConnection>
-    <url>https://github.com/apache/maven-compiler-plugin/tree/${project.scm.tag}</url>
-    <tag>HEAD</tag>
+    <connection>scm:git:https://github.com/Cosium/maven-compiler-plugin</connection>
+    <developerConnection>scm:git:https://github.com/Cosium/maven-compiler-plugin</developerConnection>
+    <url>https://github.com/Cosium/maven-compiler-plugin</url>
   </scm>
   <issueManagement>
     <system>JIRA</system>
@@ -56,10 +55,11 @@ under the License.
     <url>https://builds.apache.org/job/maven-box/job/maven-compiler-plugin/</url>
   </ciManagement>
   <distributionManagement>
-    <site>
-      <id>apache.website</id>
-      <url>scm:svn:https://svn.apache.org/repos/infra/websites/production/maven/components/${maven.site.path}</url>
-    </site>
+    <repository>
+      <id>cosium-repo</id>
+      <name>Internal Release Repository</name>
+      <url>https://repo.cosium.com/repository/internal/</url>
+    </repository>
   </distributionManagement>
 
   <properties>
@@ -249,7 +249,7 @@ under the License.
       </plugin>
     </plugins>
   </reporting>
-  
+
   <profiles>
     <profile>
       <id>run-its</id>
